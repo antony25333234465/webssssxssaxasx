@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlayerWare.Pc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(45deg, #220044, #0a0022);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container, .bottom-info {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 1;
+            margin-top: 50px;
+            transform: perspective(1000px) rotateX(0) rotateY(0);
+            transition: transform 0.2s;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .header-text {
+            font-size: 3em;
+            margin: 0;
+        }
+        .sub-text {
+            font-size: 1.5em;
+            color: #00aaff;
+            margin: 0;
+        }
+        .description {
+            margin: 20px 0;
+        }
+        .executor {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 20px auto;
+            background: url('XenonExec.png') no-repeat center center;
+            background-size: contain;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 220px;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .buttons a:hover {
+            background-color: white;
+            color: #6a00ff;
+            transform: scale(1.05);
+        }
+        .bottom-info {
+            margin-top: 50px;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            transition: transform 0.2s;
+        }
+        .highlight {
+            color: #00aaff;
+        }
+        .stars {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: 
+                724px 172px #fff,
+                741px 68px #fff,
+                513px 131px #fff,
+                755px 582px #fff,
+                779px 1057px #fff,
+                1474px 131px #fff,
+                162px 978px #fff,
+                273px 1277px #fff,
+                206px 364px #fff,
+                942px 1228px #fff,
+                1557px 497px #fff,
+                1051px 1104px #fff,
+                1317px 1283px #fff,
+                567px 1290px #fff,
+                1543px 599px #fff,
+                700px 960px #fff,
+                214px 151px #fff,
+                180px 38px #fff,
+                1487px 358px #fff,
+                890px 228px #fff,
+                1467px 133px #fff,
+                338px 1287px #fff,
+                130px 353px #fff,
+                978px 1064px #fff,
+                1426px 133px #fff,
+                148px 557px #fff,
+                1237px 1288px #fff,
+                1096px 1330px #fff,
+                276px 975px #fff,
+                1154px 159px #fff,
+                1475px 398px #fff,
+                298px 474px #fff,
+                1127px 205px #fff,
+                120px 1378px #fff,
+                764px 229px #fff,
+                1410px 586px #fff,
+                1021px 324px #fff,
+                1157px 10px #fff,
+                409px 324px #fff,
+                875px 1244px #fff,
+                1403px 440px #fff,
+                1037px 1313px #fff,
+                1290px 1100px #fff,
+                1245px 842px #fff,
+                1363px 439px #fff,
+                1442px 220px #fff,
+                988px 19px #fff,
+                22px 61px #fff,
+                324px 540px #fff,
+                1144px 437px #fff;
+            animation: animStar 50s linear infinite;
+        }
+        @keyframes animStar {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(-2000px);
+            }
+        }
+        .mouse-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .mouse-effects div {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="mouse-effects"></div>
+    <div class="container">
+        <img src="heheeeeeee.png" alt="Slayer Ware logo" class="logo">
+        <h2 class="sub-text">Slayer Ware - PC Executor</h2>
+        <p class="description">The new pc executor, SLAYER WARE.. Simple,easy to use, and, clean gui</p>
+        <div class="executor"></div>
+        <div class="buttons">
+            <a href="https://www.shutterstock.com/es/image-vector/coming-soon-on-dark-background-glowing-2364512887" class="btn download"><i class="fas fa-download"></i> Download(Coming Soon)</a>
+            <a href="https://discord.gg/9FS975UmCm" target="_blank" class="btn discord"><i class="fab fa-discord"></i> Discord</a>
+        </div>
+    </div>
+    <div class="bottom-info">
+        <p>This executor is <span class="highlight">Free and easy to use </span> theres a  <span class="highlight">english version and arabic version that is coming soon</span><span class="highlight"> join executor discord pressing the discord icon</span><span class="highlight"></span><span class="highlight"></span><span class="highlight"></span>.</p>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 25;
+            const y = (window.innerHeight / 2 - e.clientY) / 25;
+            container.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${-x}deg)`;
+        });
+
+        document.addEventListener('click', (e) => {
+            const effects = document.querySelector('.mouse-effects');
+            const div = document.createElement('div');
+            div.style.left = `${e.clientX}px`;
+            div.style.top = `${e.clientY}px`;
+            effects.appendChild(div);
+            setTimeout(() => div.remove(), 1500);
+        });
+    </script>
+</body>
+</html>
